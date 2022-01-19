@@ -3,10 +3,8 @@ package com.example.springdemo;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,12 +26,11 @@ import java.util.List;
 public class EmployeeController {
     private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
-    @Autowired
-    private EmployeeRepository repository;
+    private final EmployeeRepository repository;
 
-//    EmployeeController(EmployeeRepository repository){
-//        this.repository = repository;
-//    }
+    EmployeeController(EmployeeRepository repository){
+        this.repository = repository;
+    }
 
     @GetMapping("/employees")
     List<Employee> all() {

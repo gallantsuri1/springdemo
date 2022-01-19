@@ -1,10 +1,17 @@
 # Spring Demo
 
-### Run app and postgress containers
+### Run app and postgress containers using docker compose
 * To Start: docker compose up
 * To Stop: docker compose down
 
-Access swagger ui for api details:
+#### API
+```
+curl -X GET http://localhost:8080/employees && echo
+curl -X POST -H 'Content-type:application/json' http://localhost:8080/employees -d '{"firstName": "Alexandar","lastName": "Grahambel","role": "Scientist","salary": 123330}'
+curl -X PUT -H 'Content-type:application/json' http://localhost:8080/employees/1 -d '{"firstName": "Test","lastName": "User","role": "TestRole","salary": 199999}'
+curl -X DELETE http://localhost:8080/employees/3 && echo
+```
+####Access swagger ui for api details:
 http://localhost:8080/swagger-ui.html
 
 ##Individual commands to start each container
@@ -22,4 +29,5 @@ http://localhost:8080/swagger-ui.html
   -e PGDATA=/var/lib/postgresql/data/pgdata \
   -v postgress:/var/lib/postgresql/data \
   postgres
+
 
