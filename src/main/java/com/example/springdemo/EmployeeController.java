@@ -112,9 +112,12 @@ class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title(swaggerApiTitle)
-                .description("SpringDemo API reference for developers")
-                .termsOfServiceUrl("http://SpringDemo.com").license("SpringDemo License")
-                .licenseUrl("SpringDemo@gmail.com").version("1.0").build();
+                .description("Spring Demo API reference for developers")
+                .termsOfServiceUrl("http://localhost:8080")
+                .license("SpringDemo License")
+                .licenseUrl("http://localhost:8080")
+                .version("1.0")
+                .build();
     }
 
 }
