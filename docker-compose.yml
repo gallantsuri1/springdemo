@@ -7,8 +7,11 @@ services:
     build: ./
     ports:
       - "8080:8080"
+      - "8443:443"
     depends_on:
       - postgres-db
+      - keycloak
+
   postgres-db:
     image: postgres
     ports:
@@ -20,6 +23,18 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - postgres:/var/lib/postgresql/data
+
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - "8090:8080"
+    environment:
+      - DB_USER=postgresadm
+      - DB_PASSWORD=password
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+    depends_on:
+      - postgres-db
 
 volumes:
   postgres:
