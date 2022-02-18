@@ -1,6 +1,7 @@
 package com.example.springdemo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,10 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -24,6 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.List;
 
 @RestController
@@ -148,8 +146,9 @@ class LoadDBConfiguration {
 interface EmployeeRepository extends JpaRepository<Employee, Long> {}
 
 @Entity
-@Data
-class Employee {
+@Getter
+@Setter
+class Employee implements Serializable {
     private @Id @GeneratedValue Long id;
     private String firstName;
     private String lastName;
