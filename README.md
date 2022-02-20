@@ -46,11 +46,25 @@ docker run -d \
   -v postgress:/var/lib/postgresql/data \
   postgres
 ```
-###Keyclock Authorization server
+
+### Keyclock Authorization server
+
 ````
 docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:17.0.0 start-dev
 ````
-####Certs
+
+##### Token generation
+
+````
+curl --location --request POST 'http://localhost:8080/auth/realms/master/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=spring-demo-app-client-id' \
+--data-urlencode 'client_secret=<secret_from_keycloak>' \
+--data-urlencode 'grant_type=client_credentials'
+````
+
+#### Certs
+
 ```
 keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
 ```
