@@ -1,13 +1,22 @@
 # Spring Demo
-###Demo application
+
+### Demo application
+
 This is an Demo application built using postgres as back end and keycloak for jwt oauth2 authorization
 
 Check docker compose file to see all the target apps(springdemo, postgre)
+
+### Makefile to eash build and run app
+
+Check Makefile
+
 ### Run app and postgress containers using docker compose
+
 * To Start: docker compose up
 * To Stop: docker compose down
 
 #### API
+
 ```
 curl -X GET http://localhost:8090/employees && echo
 curl -X POST -H 'Content-type:application/json' http://localhost:8090/employees -d '{"firstName": "Alexandar","lastName": "Grahambel","role": "Scientist","salary": 123330}'

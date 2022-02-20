@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -23,5 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests.anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt).csrf().disable();
+        http.sessionManagement() // dont create a session for this configuration
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }

@@ -1,8 +1,13 @@
 app:
 	# Spring Demo - mvn build and docker build along docker compose up
-	# User "make all"
+	# Usages:
+	# make all -- to run mvn build, docker build and compose up
+	# make build -- to run "mvn clean install"
+	# make docker -- to run "docker build -t springdemo ."
+	# make up -- to run "docker compose down &&	docker compose up"
+	# make down -- to run "docker compose down"
 
-all: build docker compose_up
+all: build docker up
 
 build:
 	mvn clean install
@@ -10,10 +15,10 @@ build:
 docker:
 	docker build -t springdemo .
 
-compose_up:
+up:
 	docker compose down
 	docker compose up
 
-compose_down:
+down:
 	docker compose down
 
