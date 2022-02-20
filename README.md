@@ -33,7 +33,9 @@ docker build -t springdemo .
 docker run -p 8090:8090 springdemo
 ```
 ###Run postgresql 
-* docker run -p 5432:5432 --name postgres-db -e POSTGRES_PASSWORD=password -d postgres
+````
+docker run -p 5432:5432 --name postgres-db -e POSTGRES_PASSWORD=password -d postgres
+````
 ####alternate
 ```
 docker run -d \
