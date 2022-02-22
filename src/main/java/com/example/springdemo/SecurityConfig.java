@@ -11,7 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/swagger-ui.html")
                 .antMatchers("/webjars/springfox-swagger-ui/**")
                 .antMatchers("/swagger-resources/**")
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests.anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt).csrf().disable();
-        http.sessionManagement() // dont create a session for this configuration
+        http.sessionManagement() // don't create a session for this configuration
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }

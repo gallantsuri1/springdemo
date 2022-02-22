@@ -2,7 +2,7 @@
 
 ### Demo application
 
-This is an Demo application built using postgres as back end and keycloak for jwt oauth2 authorization
+This is a Demo application built using postgres as back end and keycloak for jwt oauth2 authorization
 
 Check docker compose file to see all the target apps(springdemo, postgre)
 

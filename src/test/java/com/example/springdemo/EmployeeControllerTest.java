@@ -44,14 +44,14 @@ class EmployeeControllerTest {
     @Test
     void get() {
         Employee expected = new Employee();
-        expected.setId(123l);
+        expected.setId(123L);
         expected.setFirstName("John");
         expected.setLastName("Cena");
         expected.setRole("Manager");
         expected.setSalary(10000000);
-        when(repository.findById(123l)).thenReturn(Optional.of(expected));
+        when(repository.findById(123L)).thenReturn(Optional.of(expected));
 
-        Employee actual = controller.get(123l);
+        Employee actual = controller.get(123L);
         assertEquals(expected, actual);
 
     }
@@ -59,7 +59,7 @@ class EmployeeControllerTest {
     @Test
     void create() {
         Employee expected = new Employee();
-        expected.setId(123l);
+        expected.setId(123L);
         expected.setFirstName("John");
         expected.setLastName("Cena");
         expected.setRole("Manager");
@@ -73,14 +73,14 @@ class EmployeeControllerTest {
     @Test
     void update() {
         Employee expected = new Employee();
-        expected.setId(123l);
+        expected.setId(123L);
         expected.setFirstName("Elon");
         expected.setLastName("Musk");
         expected.setRole("CEO");
         expected.setSalary(100000000);
 
         Function<Employee, Employee> function = employee -> {
-            expected.setId(123l);
+            expected.setId(123L);
             expected.setFirstName("Elon");
             expected.setLastName("Musk");
             expected.setRole("CEO");
@@ -88,19 +88,19 @@ class EmployeeControllerTest {
             return employee;
         };
         when(repository.save(expected)).thenReturn(expected);
-        when(repository.findById(123l).map(function)).thenReturn(Optional.of(expected));
-        Employee actual = controller.update(123l, expected);
+        when(repository.findById(123L).map(function)).thenReturn(Optional.of(expected));
+        Employee actual = controller.update(123L, expected);
 
         assertEquals(expected, actual);
     }
 
     @Test
     void delete() {
-        //doNothing().when(controller).delete(123l);
-        doNothing().when(repository).deleteById(123l);
+        //doNothing().when(controller).delete(123L);
+        doNothing().when(repository).deleteById(123L);
 
-        controller.delete(123l);
-        //verify(controller, times(1)).delete(123l);
+        controller.delete(123L);
+        //verify(controller, times(1)).delete(123L);
     }
 
     @Test
@@ -109,7 +109,7 @@ class EmployeeControllerTest {
         when(ex.getMessage()).thenReturn("test");
         String msg="";
         try{
-            controller.get(123l);
+            controller.get(123L);
         } catch (EmployeeNotFoundException e) {
            msg = ex.getMessage();
         }

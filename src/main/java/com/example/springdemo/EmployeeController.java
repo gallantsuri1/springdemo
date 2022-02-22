@@ -42,10 +42,7 @@ public class EmployeeController {
                     employee1.setSalary(employee.getSalary());
                     employee1.setRole(employee.getRole());
                     return repository.save(employee1);
-                }).orElseGet(() -> {
-                    employee.setId(id);
-                    return repository.save(employee);
-                });
+                }).orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
     @DeleteMapping("/employees/{id}")
