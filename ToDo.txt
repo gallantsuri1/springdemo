@@ -1,0 +1,22 @@
+Start with
+-----
+add ReadMe - Done
+Spring Demo app - Done
+Integration with Postgres - Done
+Integration of oAuth2 with Keycloak - Done
+Code Coverage 98% - Done
+Docker compose of containers - Done
+Jenkins CI-CD - Pending
+
+Migration to Kubernetes:
+-----
+Create SpringDemo deployment
+Create Postgres deployment
+Create Keycloak deployment
+Seperate SpringDemo props to ConfigMap
+
+Research on
+-----
+Usage of Helm Charts
+Usage of Kafka Streaming
+

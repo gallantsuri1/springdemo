@@ -2,9 +2,10 @@ package com.example.springdemo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 class EmployeeControllerTest {
-
+    @Spy
+    @InjectMocks
     private EmployeeController controller;
 
     @Mock
@@ -25,8 +26,9 @@ class EmployeeControllerTest {
 
     @BeforeEach
     void setup() {
-        controller = new EmployeeController(repository);
+        MockitoAnnotations.openMocks(this);
     }
+
     @Test
     void all() {
 
@@ -64,7 +66,7 @@ class EmployeeControllerTest {
         expected.setLastName("Cena");
         expected.setRole("Manager");
         expected.setSalary(10000000);
-        when(controller.create(any())).thenReturn(expected);
+        when( repository.save(expected)).thenReturn(expected);
         Employee actual = controller.create(expected);
 
         assertEquals(expected, actual);
