@@ -6,7 +6,7 @@ This is a Demo application built using postgres as back end and keycloak for jwt
 
 Check docker compose file to see all the target apps(springdemo, postgre)
 
-### Makefile to eash build and run app
+### Makefile to ease build and run app
 
 Check Makefile
 
